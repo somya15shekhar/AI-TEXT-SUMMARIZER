@@ -128,20 +128,14 @@ with tab1:
         
         with col_sample:
             if st.button("📰 Load Sample", help="Load a sample article"):
-                st.session_state.load_sample = True
-    
-    # Load sample if requested
-    if hasattr(st.session_state, 'load_sample') and st.session_state.load_sample:
-        sample_articles = get_sample_articles()
-        sample_text = sample_articles[0]["content"]
-        st.session_state.sample_text = sample_text
-        st.session_state.load_sample = False
-        st.rerun()
+                sample_articles = get_sample_articles()
+                st.session_state.sample_loaded = sample_articles[0]["content"]
+                st.rerun()
     
     # Use sample text if available
-    if hasattr(st.session_state, 'sample_text'):
-        article_text = st.session_state.sample_text
-        del st.session_state.sample_text
+    if 'sample_loaded' in st.session_state:
+        article_text = st.session_state.sample_loaded
+        del st.session_state.sample_loaded
     
     # Summarize button
     st.markdown("---")
