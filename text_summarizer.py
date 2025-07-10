@@ -2,7 +2,7 @@
 Simple Text Summarizer using lightweight transformer
 """
 
-import re
+import regex as re
 from typing import Optional
 
 class TextSummarizer:
@@ -25,7 +25,7 @@ class TextSummarizer:
                 device=-1  # Use CPU
             )
             self.model_loaded = True
-            print("✅ DistilBART model loaded successfully")
+            print("✅ BART model loaded successfully")
         except:
             print("⚠️ Using extractive summarization fallback")
             self.model_loaded = False

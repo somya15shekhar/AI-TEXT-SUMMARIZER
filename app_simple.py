@@ -33,85 +33,10 @@ st.markdown(f"**Model:** {summarizer.get_status()}")
 st.markdown("---")
 
 # Main tabs
-tab1, tab2, tab3 = st.tabs(["✏️ Text Summarizer", "📊 File Upload", "📰 Sample Articles"])
+tab1, tab2 = st.tabs(["📊 File Upload", "📰 Sample Articles"])
 
-# Tab 1: Text Summarizer
+# Tab 1: File Upload
 with tab1:
-    st.header("Paste Your Text")
-    
-    # Text input
-    text_input = st.text_area(
-        "Enter your text here:",
-        height=300,
-        placeholder="Paste your article, news story, or any text you want to summarize..."
-    )
-    
-    # Settings
-    col1, col2 = st.columns([3, 1])
-    
-    with col1:
-        if text_input:
-            words = len(text_input.split())
-            st.caption(f"📊 {words:,} words")
-    
-    with col2:
-        summary_length = st.selectbox(
-            "Summary length:",
-            ["Short (100 words)", "Medium (150 words)", "Long (200 words)"],
-            index=1
-        )
-        
-        # Extract number from selection
-        length_map = {
-            "Short (100 words)": 100,
-            "Medium (150 words)": 150,
-            "Long (200 words)": 200
-        }
-        max_length = length_map[summary_length]
-    
-    # Generate summary
-    if st.button("🚀 Generate Summary", type="primary", use_container_width=True):
-        if not text_input:
-            st.error("Please enter some text to summarize")
-        elif len(text_input.split()) < 20:
-            st.error("Text is too short. Please enter at least 20 words.")
-        else:
-            with st.spinner("Generating summary..."):
-                start_time = time.time()
-                summary = summarizer.summarize(text_input, max_length)
-                end_time = time.time()
-            
-            st.success("Summary generated!")
-            
-            # Show metrics
-            col1, col2, col3 = st.columns(3)
-            original_words = len(text_input.split())
-            summary_words = len(summary.split())
-            compression = round((1 - summary_words/original_words) * 100, 1)
-            
-            with col1:
-                st.metric("Original", f"{original_words} words")
-            with col2:
-                st.metric("Summary", f"{summary_words} words")
-            with col3:
-                st.metric("Compression", f"{compression}%")
-            
-            # Display summary
-            st.markdown("### 📄 Summary")
-            st.info(summary)
-            
-            # Download
-            summary_data = f"Original Text:\n{text_input}\n\nSummary:\n{summary}\n\nStats:\n- Original: {original_words} words\n- Summary: {summary_words} words\n- Compression: {compression}%\n- Time: {end_time - start_time:.2f}s"
-            
-            st.download_button(
-                "📥 Download Summary",
-                summary_data,
-                file_name="summary.txt",
-                mime="text/plain"
-            )
-
-# Tab 2: File Upload
-with tab2:
     st.header("Upload CSV File")
     
     uploaded_file = st.file_uploader(
@@ -179,8 +104,8 @@ with tab2:
         else:
             st.error("Error reading file. Please check your CSV format.")
 
-# Tab 3: Sample Articles
-with tab3:
+# Tab 2: Sample Articles
+with tab2:
     st.header("Try Sample Articles")
     
     samples = get_sample_data()
