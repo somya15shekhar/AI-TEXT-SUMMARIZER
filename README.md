@@ -14,7 +14,7 @@ A fast, efficient text summarization web application built with Streamlit and ad
 
 ## 🎮 Try It Live
 
-[Deploy on Streamlit Cloud](https://streamlit.io/cloud)
+https://appsimplepy-bmop9b7aqi83wa5qtgk9d4.streamlit.app/
 
 ## 🛠️ Installation
 
