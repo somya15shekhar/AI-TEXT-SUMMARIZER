@@ -1,8 +1,8 @@
-# Advanced AI Text Summarizer
+# Simple AI Text Summarizer
 
 ## Overview
 
-The Advanced AI Text Summarizer is a sophisticated web application built with Streamlit that transforms long articles into concise summaries using sequence-to-sequence transformer models. The application implements true abstractive summarization - generating new text rather than just extracting existing sentences. It provides multiple model options, batch processing capabilities, and comprehensive metrics tracking with a professional interface.
+The Simple AI Text Summarizer is a clean, easy-to-deploy web application built with Streamlit that transforms long articles into concise summaries using a lightweight transformer model. The application uses DistilBART for fast, quality summarization with an automatic fallback to extractive methods. It provides manual text input, CSV file processing, and sample articles in a straightforward interface optimized for easy deployment.
 
 ## User Preferences
 
