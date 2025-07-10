@@ -21,7 +21,7 @@ class TextSummarizer:
             # Use a small, fast model that works well for summarization
             self.model = pipeline(
                 "summarization",
-                model="google/pegasus-xsum",
+                model="linydub/bart-small",
                 device=-1  # Use CPU
             )
             self.model_loaded = True
