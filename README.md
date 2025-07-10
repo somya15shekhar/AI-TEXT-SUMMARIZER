@@ -4,8 +4,6 @@ A fast, efficient text summarization web application built with Streamlit and ad
 
 ## ✨ Features
 
-- **🚀 Instant Text Summarization**: Paste any text and get AI-powered summaries in seconds
-- **🔧 Multiple Summary Lengths**: Choose between short, medium, and long summaries
 - **📊 Batch Processing**: Upload CSV files to summarize multiple articles at once
 - **🎯 Sample Articles**: Test the app with pre-loaded sample articles
 - **📈 Real-time Metrics**: Track word count, compression ratio, and processing time
@@ -16,9 +14,14 @@ A fast, efficient text summarization web application built with Streamlit and ad
 
 https://appsimplepy-bmop9b7aqi83wa5qtgk9d4.streamlit.app/
 
+NOTE: Due to free resource limits on Streamlit Cloud, the transformer-based abstractive summarizer is replaced with an extractive summarization fallback. It selects key sentences from the input text to generate concise summaries efficiently.
+
 ## 🛠️ Installation
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/ai-text-summarizer.git
-cd ai-text-summarizer
+git clone https://github.com/somya15shekhar/text_summarizer_project.git
+cd your repo
+pip install -r requirements.txt
+streamlit run app.py
+
